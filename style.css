@@ -1,22 +1,6 @@
 /* ==========================================================================
    Portfolio — Maroua Behih
-   Sommaire :
-     1. Variables (thèmes sombre / clair)
-     2. Base
-     3. En-tête (identité, liens, boutons)
-     4. Grille bento et tuiles
-     5. Présentation
-     6. Formation et expériences
-     7. Projets
-     8. Compétences
-     9. Contact et pied de page
-    10. Animations
-    11. Responsive
-    12. Mouvement réduit
    ========================================================================== */
-
-
-/* 1. Variables ------------------------------------------------------------ */
 
 :root {
   --void: #1B1720;
@@ -45,11 +29,8 @@
   --text-secondary: #6E6079;
   --accent: #7C4DBE;
   --accent-2: var(--deep-violet);
-  --border: rgba(36, 27, 47, 0.12);
+  --border: rgba(36, 27, 47, 0.15);
 }
-
-
-/* 2. Base ----------------------------------------------------------------- */
 
 * { box-sizing: border-box; }
 
@@ -60,35 +41,38 @@ html, body {
   color: var(--text-primary);
   font-family: 'Inter', -apple-system, sans-serif;
   scroll-behavior: smooth;
-}
-
-body {
-  background-image:
-    radial-gradient(circle at 90% 0%, rgba(139, 92, 246, 0.16), transparent 45%),
-    radial-gradient(circle at 0% 80%, rgba(232, 217, 197, 0.08), transparent 40%);
-  background-attachment: fixed;
+  overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-a { color: inherit; }
+/* Canvas interactif de fond */
+#bgCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
 
 .page {
+  position: relative;
+  z-index: 1;
   max-width: 1400px;
   width: 92%;
   margin: 0 auto;
   padding: 40px 20px 80px;
 }
 
-
-/* 3. En-tête -------------------------------------------------------------- */
-
+/* En-tête */
 .identity {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   margin-bottom: 32px;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 16px;
 }
 
 .identity .name {
@@ -100,13 +84,13 @@ a { color: inherit; }
 .identity-right {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
 .identity .links {
   display: flex;
-  gap: 24px;
+  gap: 20px;
 }
 
 .identity .links a {
@@ -119,7 +103,33 @@ a { color: inherit; }
 
 .identity .links a:hover { color: var(--text-primary); }
 
-/* Bouton CV (désactivé en attendant le fichier) */
+/* Bouton de changement de langue amélioré et clair */
+.lang-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lang-toggle-btn svg {
+  stroke: var(--accent);
+}
+
+.lang-toggle-btn:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--accent), transparent 90%);
+}
+
+/* Bouton CV interactif */
 .cv-btn {
   display: inline-flex;
   align-items: center;
@@ -131,8 +141,16 @@ a { color: inherit; }
   color: var(--text-secondary);
   font-size: 13px;
   font-weight: 500;
-  cursor: not-allowed;
-  opacity: 0.6;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cv-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent), transparent 90%);
+  transform: translateY(-1px);
 }
 
 .theme-toggle {
@@ -156,9 +174,7 @@ a { color: inherit; }
   border-color: var(--accent);
 }
 
-
-/* 4. Grille bento et tuiles ----------------------------------------------- */
-
+/* Grille Bento */
 .bento {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -174,13 +190,15 @@ a { color: inherit; }
   padding: 32px;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(8px);
 }
 
+/* Titres de section avec icône */
 .tile-label {
   font-family: 'Unbounded', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 800;
-  color: var(--text-primary);
+  color: var(--accent);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -189,17 +207,12 @@ a { color: inherit; }
   gap: 10px;
 }
 
-.tile-label::before {
-  content: '';
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 10px var(--accent);
+.tile-label svg {
+  stroke: var(--accent);
+  flex-shrink: 0;
 }
 
-/* Placement des tuiles */
+/* Positionnement Bento */
 .tile-presentation { grid-column: span 6; display: flex; flex-direction: column; justify-content: center; }
 .tile-formation    { grid-column: span 6; }
 .tile-experience   { grid-column: span 6; }
@@ -208,14 +221,12 @@ a { color: inherit; }
 .tile-langues      { grid-column: span 2; }
 .tile-contact      { grid-column: span 4; display: flex; flex-direction: column; justify-content: center; }
 
-
-/* 5. Présentation --------------------------------------------------------- */
-
+/* Présentation */
 .tile-presentation h1 {
   font-family: 'Unbounded', sans-serif;
   font-weight: 800;
-  font-size: clamp(28px, 3.4vw, 40px);
-  line-height: 1.15;
+  font-size: clamp(26px, 3.2vw, 38px);
+  line-height: 1.2;
   margin: 0 0 16px;
 }
 
@@ -228,12 +239,11 @@ a { color: inherit; }
 
 .tile-presentation p {
   color: var(--text-secondary);
-  font-size: 15.5px;
+  font-size: 15px;
   line-height: 1.7;
   margin: 0;
 }
 
-/* Badge avec icône « play » */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -249,7 +259,7 @@ a { color: inherit; }
   align-self: flex-start;
   text-decoration: none;
   cursor: pointer;
-  transition: border-color 0.25s ease, transform 0.25s ease, background-color 0.3s ease, box-shadow 0.25s ease;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .badge:hover {
@@ -263,9 +273,7 @@ a { color: inherit; }
   height: 7px;
   border-radius: 50%;
   background: var(--accent);
-  flex-shrink: 0;
   box-shadow: 0 0 8px var(--accent);
-  animation: pulse 2s infinite;
 }
 
 .badge .play-icon {
@@ -279,32 +287,9 @@ a { color: inherit; }
   color: #fff;
   font-size: 9px;
   padding-left: 2px;
-  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.badge:hover .play-icon {
-  transform: scale(1.15);
-  background: var(--pink-orchid);
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7);
-  }
-  70% {
-    transform: scale(1.15);
-    box-shadow: 0 0 0 6px rgba(139, 92, 246, 0);
-  }
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
-  }
-}
-
-
-/* 6. Formation et expériences --------------------------------------------- */
-
+/* Listes */
 .mini-list {
   display: flex;
   flex-direction: column;
@@ -321,7 +306,7 @@ a { color: inherit; }
 .mini-item h3 {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  font-size: 14.5px;
+  font-size: 15px;
   margin: 0 0 4px;
 }
 
@@ -332,7 +317,6 @@ a { color: inherit; }
   margin: 0;
 }
 
-/* Distinctions (formation) */
 .mini-item .honor {
   font-size: 12.5px;
   font-weight: 600;
@@ -341,7 +325,7 @@ a { color: inherit; }
 }
 
 .mini-item ul {
-  margin: 0;
+  margin: 4px 0 0;
   padding-left: 16px;
 }
 
@@ -352,11 +336,7 @@ a { color: inherit; }
   margin-bottom: 4px;
 }
 
-.mini-item li:last-child { margin-bottom: 0; }
-
-
-/* 7. Projets -------------------------------------------------------------- */
-
+/* Projets */
 .projects-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -370,21 +350,27 @@ a { color: inherit; }
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
-/* Cadre de l'image / du GIF : proportions fixes dès le départ, image entière visible */
+.case:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+}
+
 .case-thumb {
   width: 100%;
   aspect-ratio: 16 / 10;
   flex-shrink: 0;
-  background: var(--bg);   /* visible dans les marges si l'image ne remplit pas tout le cadre */
+  background: var(--bg);
   overflow: hidden;
 }
 
 .case-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: contain;     /* image affichée en entier, jamais rognée */
+  object-fit: contain;
   display: block;
 }
 
@@ -443,12 +429,9 @@ a { color: inherit; }
   color: var(--text-primary);
   border-color: var(--accent);
   background: color-mix(in srgb, var(--accent), transparent 90%);
-  transform: translateY(-1px);
 }
 
-
-/* 8. Compétences ---------------------------------------------------------- */
-
+/* Compétences */
 .skill-groups-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -484,11 +467,15 @@ a { color: inherit; }
   font-size: 13px;
   color: var(--text-primary);
   background: var(--bg-elevated);
+  transition: transform 0.15s ease;
 }
 
+.pill:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+}
 
-/* 9. Contact et pied de page ---------------------------------------------- */
-
+/* Contact */
 .tile-contact p {
   color: var(--text-secondary);
   font-size: 14.5px;
@@ -511,6 +498,7 @@ a { color: inherit; }
   font-size: 14.5px;
   border-bottom: 1px solid var(--border);
   padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .contact-links a:hover {
@@ -525,10 +513,7 @@ a { color: inherit; }
   text-align: center;
 }
 
-
-/* 10. Animations ---------------------------------------------------------- */
-
-/* Apparition des tuiles au défilement (la transition est définie sur .tile) */
+/* Animations d'apparition */
 [data-reveal] {
   opacity: 0;
   transform: translateY(24px);
@@ -540,79 +525,24 @@ a { color: inherit; }
 }
 
 .tile {
-  transition:
-    opacity 0.6s ease,
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease,
-    background-color 0.3s ease,
-    color 0.3s ease;
+  transition: opacity 0.6s ease, transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.3s ease;
 }
 
 .tile:hover {
   transform: translateY(-3px);
-  border-color: color-mix(in srgb, var(--border), var(--accent) 40%);
+  border-color: color-mix(in srgb, var(--border), var(--accent) 50%);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
 }
 
-.case {
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    background-color 0.3s ease,
-    color 0.3s ease,
-    border-color 0.3s ease;
-}
-
-.case:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
-}
-
-.pill {
-  transition:
-    transform 0.15s ease,
-    background 0.15s ease,
-    color 0.3s ease,
-    border-color 0.3s ease;
-}
-
-.pill:hover {
-  transform: translateY(-1px);
-  background: var(--bg-elevated);
-}
-
-
-/* 11. Responsive ---------------------------------------------------------- */
-
+/* Responsive */
 @media (max-width: 900px) {
   .page { width: 100%; padding: 24px 16px; }
   .bento { grid-template-columns: 1fr; }
-
   .tile-presentation, .tile-formation, .tile-projects, .tile-skills,
   .tile-experience, .tile-langues, .tile-contact {
     grid-column: span 1;
     grid-row: auto;
   }
-
   .projects-row { grid-template-columns: 1fr; }
   .skill-groups-grid { grid-template-columns: 1fr; }
-}
-
-
-/* 12. Mouvement réduit ---------------------------------------------------- */
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-
-  body, .tile, .case, .pill, .badge { transition: none; }
-
-  [data-reveal] {
-    opacity: 1;
-    transform: none;
-  }
-
-  .tile:hover, .case:hover, .pill:hover, .badge:hover { transform: none; }
-  .badge .dot { animation: none; }
-  .badge:hover .play-icon { transform: none; }
 }

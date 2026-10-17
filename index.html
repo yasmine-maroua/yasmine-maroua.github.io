@@ -1,306 +1,619 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maroua Behih</title>
-  <meta name="description" content="Étudiante en M1 Informatique — IA, machine learning, deep learning, vision par ordinateur et modélisation.">
+  <title data-fr="Maroua Behih — Portfolio" data-en="Maroua Behih — Portfolio">Maroua Behih — Portfolio</title>
+  <meta name="description"
+    content="Étudiante en M1 Informatique — IA, machine learning, deep learning, vision par ordinateur et modélisation."
+    data-fr-content="Étudiante en M1 Informatique — IA, machine learning, deep learning, vision par ordinateur et modélisation."
+    data-en-content="First-year Computer Science Master's student interested in AI, machine learning, deep learning, computer vision, and modeling.">
   <meta property="og:title" content="Maroua Behih — Portfolio">
-  <meta property="og:description" content="Étudiante en M1 Informatique — IA, machine learning, deep learning, vision par ordinateur et modélisation.">
+  <meta property="og:description"
+    content="Étudiante en M1 Informatique — IA, machine learning, deep learning, vision par ordinateur et modélisation."
+    data-fr-content="Étudiante en M1 Informatique — IA, machine learning, deep learning, vision par ordinateur et modélisation."
+    data-en-content="First-year Computer Science Master's student interested in AI, machine learning, deep learning, computer vision, and modeling.">
   <meta property="og:type" content="website">
   <meta name="google-site-verification" content="XuQV1-FUZ3OKxVhsx-ur6rsH3w_4j-mEsf4dJzpUJhQ" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&amp;family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="page">
+  <!-- Canvas pour l'arrière-plan animé -->
+  <canvas id="bgCanvas"></canvas>
 
-  <div class="identity">
-    <div class="name">Maroua Behih</div>
-    <div class="identity-right">
-      <div class="links">
-        <a href="mailto:maroua.behih@etud.univ-angers.fr">Email</a>
-        <a href="https://www.linkedin.com/in/marouayasmine-behih" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/yasmine-maroua" target="_blank" rel="noopener">GitHub</a>
+  <div class="page">
+
+    <div class="identity">
+      <div class="name">Maroua Behih</div>
+      <div class="identity-right">
+        <div class="links">
+          <a href="mailto:maroua.behih@etud.univ-angers.fr">Email</a>
+          <a href="https://www.linkedin.com/in/marouayasmine-behih" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/yasmine-maroua" target="_blank" rel="noopener">GitHub</a>
+        </div>
+
+        <!-- Sélecteur de langue clair -->
+        <button id="langToggle" class="lang-toggle-btn" type="button" aria-label="Changer de langue"
+          data-fr-aria-label="Changer de langue" data-en-aria-label="Change language">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span id="langText">English</span>
+        </button>
+
+        <!-- Bouton / Lien de CV interactif -->
+        <a id="cvBtn" class="cv-btn" href="CV_BEHIH_Maroua.pdf" download title="Télécharger mon CV"
+          data-fr-title="Télécharger mon CV" data-en-title="Download my resume">
+          📄 <span data-fr="CV" data-en="Resume">CV</span>
+        </a>
+
+        <!-- Toggle de Thème -->
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Changer de thème">🌙</button>
       </div>
-      <!-- Bouton de CV désactivé en attendant le fichier -->
-      <button class="cv-btn" type="button" disabled title="CV bientôt disponible">📄 Télécharger CV</button>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Changer de thème">🌙</button>
     </div>
+
+    <div class="bento">
+
+      <!-- Présentation -->
+      <div class="tile tile-presentation" id="presentation" data-reveal>
+        <span class="tile-label">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span data-fr="Présentation" data-en="About Me">Présentation</span>
+        </span>
+        <h1 data-fr="Au croisement de l'<span>IA</span>, de la modélisation et du visuel"
+          data-en="At the intersection of <span>AI</span>, modeling &amp; visual computing">Au croisement de
+          l'<span>IA</span>, de la modélisation et du visuel</h1>
+        <p data-fr="Étudiante en M1 Informatique à l’Université d’Angers, je m’intéresse à l'intelligence artificielle sous un angle théorique et appliqué : machine learning, deep learning, traitement d'images et du signal. Passionnée par la résolution de problèmes complexes, la modélisation et l'optimisation, je combine rigueur mathématique et logique pour explorer des approches d'IA à forte dimension scientifique."
+          data-en="I am a first-year Master's student in Computer Science at the University of Angers, interested in artificial intelligence from both theoretical and applied perspectives, including machine learning, deep learning, and image and signal processing. Passionate about solving complex problems, modeling, and optimization, I combine mathematical rigor and logical reasoning to explore AI approaches with a strong scientific foundation.">
+          Étudiante en M1 Informatique à l’Université d’Angers, je m’intéresse à l'intelligence artificielle sous un
+          angle théorique et appliqué : machine learning, deep learning, traitement d'images et du signal. Passionnée
+          par la résolution de problèmes complexes, la modélisation et l'optimisation, je combine rigueur mathématique
+          et logique pour explorer des approches d'IA à forte dimension scientifique.
+        </p>
+        <a class="badge" href="https://youtube.com/shorts/NYSA6dc7lqo?si=vKvdRVb_ayZRSxr-" target="_blank"
+          rel="noopener">
+          <span class="dot"></span>
+          <span data-fr="Lauréate de la bourse Femmes en Sciences 2026"
+            data-en="Recipient of the 2026 Women in Science Scholarship">Lauréate de la bourse Femmes en Sciences
+            2026</span>
+          <span class="play-icon" aria-hidden="true">▶</span>
+        </a>
+      </div>
+
+      <!-- Formation -->
+      <div class="tile tile-formation" id="formation" data-reveal>
+        <span class="tile-label">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+          </svg>
+          <span data-fr="Formation" data-en="Education">Formation</span>
+        </span>
+        <div class="mini-list">
+          <div class="mini-item">
+            <div class="date" data-fr="2026 – en cours" data-en="2026 – Present">2026 – en cours</div>
+            <h3 data-fr="Master 1 Informatique" data-en="Master 1 in Computer Science">Master 1 Informatique</h3>
+            <p data-fr="Université d'Angers" data-en="University of Angers, France">Université d'Angers</p>
+            <ul>
+              <li
+                data-fr="<strong>Modules principaux :</strong> Intelligence Artificielle, Optimisation linéaire, Développement Mobile, Design Pattern, Introduction à la résolution de problème."
+                data-en="<strong>Key Courses:</strong> Artificial Intelligence, Linear Optimization, Mobile Development, Design Patterns, Introduction to Problem Solving.">
+                <strong>Modules principaux :</strong> Intelligence Artificielle, Optimisation linéaire, Développement
+                Mobile, Design Pattern, Introduction à la résolution de problème.
+              </li>
+            </ul>
+          </div>
+          <div class="mini-item">
+            <div class="date">2024 – 2026</div>
+            <h3 data-fr="Licence Informatique (L2, L3)" data-en="Bachelor in Computer Science (L2, L3)">Licence
+              Informatique (L2, L3)</h3>
+            <p data-fr="Université d'Angers" data-en="University of Angers, France">Université d'Angers</p>
+            <p class="honor" data-fr="🏅 Classée 2<sup>e</sup> de promotion (2 ans consécutifs)"
+              data-en="🏅 Ranked 2nd in class (2 consecutive years)">🏅 Classée 2<sup>e</sup> de promotion (2 ans
+              consécutifs)</p>
+            <ul>
+              <li
+                data-fr="<strong>Modules principaux :</strong> Développement Web, Traitement de données, Bases de données, Théorie des langages et Compilation, Programmation orientée objet, Programmation fonctionnelle, Programmation logique, Synthèse d'image, Introduction au machine learning."
+                data-en="<strong>Key Courses:</strong> Web Development, Data Processing, Databases, Formal Languages and Compilation, Object-Oriented Programming, Functional Programming, Logic Programming, Image Synthesis, Introduction to Machine Learning.">
+                <strong>Modules principaux :</strong> Développement Web, Traitement de données, Bases de données,
+                Théorie des langages et Compilation, Programmation orientée objet, Programmation fonctionnelle,
+                Programmation logique, Synthèse d'image, Introduction au machine learning.
+              </li>
+            </ul>
+          </div>
+          <div class="mini-item">
+            <div class="date">2022 – 2024</div>
+            <h3 data-fr="Cycle préparatoire ingénieur info."
+              data-en="Preparatory Program for a Computer Engineering Degree">Cycle préparatoire ingénieur info.</h3>
+            <p data-fr="USTHB, Alger" data-en="USTHB, Algiers, Algeria">USTHB, Alger</p>
+            <p class="honor" data-fr="🥇 Major de promotion en 1<sup>ère</sup> année"
+              data-en="🥇 Ranked 1st in the first year">🥇 Major de promotion en 1<sup>ère</sup> année</p>
+            <ul>
+              <li
+                data-fr="<strong>Modules principaux :</strong> Analyse mathématique, Algèbre linéaire, Probabilités & statistiques, Algorithmique et complexité, Structures de fichiers et structures de données, Architecture des ordinateurs, Théorie des graphes."
+                data-en="<strong>Key Courses:</strong> Mathematical Analysis, Linear Algebra, Probability & Statistics, Algorithms & Complexity, Data Structures & File Structures, Computer Architecture, Graph Theory.">
+                <strong>Modules principaux :</strong> Analyse mathématique, Algèbre linéaire, Probabilités &
+                statistiques, Algorithmique et complexité, Structures de fichiers et structures de données, Architecture
+                des ordinateurs, Théorie des graphes.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Expériences -->
+      <div class="tile tile-experience" id="experience" data-reveal>
+        <span class="tile-label">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+          <span data-fr="Expériences" data-en="Experience">Expériences</span>
+        </span>
+        <div class="mini-list">
+          <div class="mini-item">
+            <div class="date" data-fr="Avril 2026 – Mai 2026" data-en="April 2026 – May 2026">Avril 2026 – Mai 2026
+            </div>
+            <h3 data-fr="Stage de L3" data-en="Third-Year Computer Science Internship">Stage de L3</h3>
+            <p data-fr="Université d'Angers" data-en="University of Angers, France">Université d'Angers</p>
+            <ul>
+              <li
+                data-fr="Développement d’une application web accessible depuis un navigateur, automatisant la constitution de poules sportives et la numérotation des équipes selon des contraintes géographiques, sportives et réglementaires."
+                data-en="Developed a browser-based web application automating sports tournament group formation and team numbering based on geographic, sporting, and regulatory constraints.">
+                Développement d’une application web accessible depuis un navigateur, automatisant la constitution de
+                poules sportives et la numérotation des équipes selon des contraintes géographiques, sportives et
+                réglementaires.
+              </li>
+              <li
+                data-fr="Conception de deux algorithmes de répartition : l’un minimisant les distances géographiques entre clubs, l’autre équilibrant les poules selon le statut sportif des équipes."
+                data-en="Designed two group assignment algorithms: one minimizing geographical distances between clubs, and another balancing groups according to teams' competitive status.">
+                Conception de deux algorithmes de répartition : l’un minimisant les distances géographiques entre clubs,
+                l’autre équilibrant les poules selon le statut sportif des équipes.
+              </li>
+              <li data-fr="Import et validation de données au format CSV avec détection automatique des anomalies."
+                data-en="CSV data import and validation with automated anomaly detection.">
+                Import et validation de données au format CSV avec détection automatique des anomalies.
+              </li>
+              <li
+                data-fr="Visualisation cartographique interactive des poules générées couplée à des tableaux de statistiques."
+                data-en="Interactive map visualization of the generated groups, alongside statistical tables.">
+                Visualisation cartographique interactive des poules générées couplée à des tableaux de statistiques.
+              </li>
+            </ul>
+          </div>
+          <div class="mini-item">
+            <div class="date" data-fr="Février 2026 – Juillet 2026" data-en="February 2026 – July 2026">Février 2026 –
+              Juillet 2026</div>
+            <h3 data-fr="Preneuse de notes — Service Inclusion Relais Handicap"
+              data-en="Note Taker — Disability Support Service">Preneuse de notes — Service Inclusion Relais Handicap
+            </h3>
+            <p data-fr="Université d'Angers" data-en="University of Angers, France">Université d'Angers</p>
+            <ul>
+              <li
+                data-fr="Prise de notes structurée et rigoureuse en cours, transmise régulièrement via OneNote dans les délais impartis."
+                data-en="Prepared and regularly shared structured lecture notes via OneNote, meeting deadlines.">
+                Prise de notes structurée et rigoureuse en cours, transmise régulièrement via OneNote dans les délais
+                impartis.
+              </li>
+            </ul>
+          </div>
+          <div class="mini-item">
+            <div class="date">2023 – 2024</div>
+            <h3 data-fr="Membre du département des relations externes — Micro Club"
+              data-en="Member of the External Relations Department — Micro Club">Membre du département des relations
+              externes — Micro Club</h3>
+            <p data-fr="USTHB-Alger" data-en="USTHB, Algiers, Algeria">USTHB-Alger</p>
+            <ul>
+              <li data-fr="Organisation et coordination d'événements scientifiques et de hackathons."
+                data-en="Organization and coordination of scientific events and hackathons.">
+                Organisation et coordination d'événements scientifiques et de hackathons.
+              </li>
+              <li
+                data-fr="Communication et négociation avec les partenaires externes, avec un accent mis sur la gestion et l'organisation de projets avec les autres départements du club."
+                data-en="Communication and negotiation with external partners, with a strong focus on project management and cross-departmental collaboration within the club.">
+                Communication et négociation avec les partenaires externes, avec un accent mis sur la gestion et
+                l'organisation de projets avec les autres départements du club.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projets -->
+      <div class="tile tile-projects" id="projects" data-reveal>
+        <span class="tile-label">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span data-fr="Projets" data-en="Projects">Projets</span>
+        </span>
+        <div class="projects-row">
+          <div class="case">
+            <div class="case-thumb">
+              <img src="classification.png" alt="Aperçu du projet de classification d'images"
+                data-fr-alt="Aperçu du projet de classification d'images"
+                data-en-alt="Image classification project preview" loading="lazy">
+            </div>
+            <div class="case-body">
+              <div class="case-header-row">
+                <span class="tag">Machine learning · Python</span>
+                <a href="https://github.com/yasmine-maroua/classification-images" class="project-github-link"
+                  target="_blank" rel="noopener" title="Voir le code sur GitHub" data-fr-title="Voir le code sur GitHub"
+                  data-en-title="View code on GitHub">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                    </path>
+                  </svg>
+                  <span>Code</span>
+                </a>
+              </div>
+              <h3 data-fr="Classification d’images — du K-NN au ResNet-18"
+                data-en="Image Classification — From K-NN to ResNet-18">Classification d’images — du K-NN au ResNet-18
+              </h3>
+              <p data-fr="Classification multi-classes d’images couleur de 32×32 pixels réparties en 10 classes. Comparaison progressive de plusieurs modèles : des approches classiques (K-NN à environ 22%, régression logistique à 39,5% et perceptron multicouche à 49,5%) vers des architectures spécialisées en vision par ordinateur (CNN à 73,5% et ResNet-18 atteignant 94,1%)."
+                data-en="Multi-class classification of 32×32 RGB images across 10 classes. Progressive evaluation of models: classical approaches (K-NN ~22%, Logistic Regression ~39.5%, MLP ~49.5%) moving towards computer vision architectures (CNN at 73.5% and ResNet-18 achieving 94.1% accuracy).">
+                Classification multi-classes d’images couleur de 32×32 pixels réparties en 10 classes. Comparaison
+                progressive de plusieurs modèles : des approches classiques (K-NN à environ 22%, régression logistique à
+                39,5% et perceptron multicouche à 49,5%) vers des architectures spécialisées en vision par ordinateur
+                (CNN à 73,5% et ResNet-18 atteignant 94,1%).
+              </p>
+            </div>
+          </div>
+
+          <div class="case">
+            <div class="case-thumb">
+              <img src="insect_world.gif" alt="Aperçu Insect World 3D" data-fr-alt="Aperçu Insect World 3D"
+                data-en-alt="Insect World 3D preview" loading="lazy">
+            </div>
+            <div class="case-body">
+              <div class="case-header-row">
+                <span class="tag">Synthèse d’image · C &amp; OpenGL</span>
+                <a href="https://github.com/yasmine-maroua/insect_world" class="project-github-link" target="_blank"
+                  rel="noopener" title="Voir le code sur GitHub" data-fr-title="Voir le code sur GitHub"
+                  data-en-title="View code on GitHub">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                    </path>
+                  </svg>
+                  <span>Code</span>
+                </a>
+              </div>
+              <h3 data-fr="Insect World — Monde 3D interactif" data-en="Insect World — Interactive 3D World">Insect
+                World — Monde 3D interactif</h3>
+              <p data-fr="Modélisation d’un univers 3D animé en C et OpenGL (GLUT). Ciel sphérique texturé, sol herbeux optimisé (display lists), coccinelle pilotable au clavier et quatre insectes autonomes avec animations de vol articulées."
+                data-en="Modeling an animated 3D world in C and OpenGL (GLUT). Featuring a textured sky sphere, optimized grass-covered terrain (display lists), a keyboard-controlled ladybug, and four autonomous insects with articulated flight animations.">
+                Modélisation d’un univers 3D animé en C et OpenGL (GLUT). Ciel sphérique texturé, sol herbeux optimisé
+                (display lists), coccinelle pilotable au clavier et quatre insectes autonomes avec animations de vol
+                articulées.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compétences -->
+      <div class="tile tile-skills" id="skills" data-reveal>
+        <span class="tile-label">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+            </polygon>
+          </svg>
+          <span data-fr="Compétences" data-en="Skills">Compétences</span>
+        </span>
+        <div class="skill-groups-grid">
+          <div class="skill-card">
+            <h4 data-fr="IA & Vision par ordinateur" data-en="AI & Computer Vision">IA &amp; Vision par ordinateur</h4>
+            <div class="pill-row">
+              <span class="pill">PyTorch</span>
+              <span class="pill">TensorFlow</span>
+              <span class="pill">scikit-learn</span>
+              <span class="pill">CNN</span>
+              <span class="pill" data-fr="Traitement d'images" data-en="Image Processing">Traitement d'images</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h4 data-fr="Infographie & Synthèse 3D" data-en="Computer Graphics &amp; 3D Rendering">Infographie &amp;
+              Synthèse 3D</h4>
+            <div class="pill-row">
+              <span class="pill">OpenGL</span>
+              <span class="pill">Qt</span>
+              <span class="pill" data-fr="Rendu interactif" data-en="Interactive Rendering">Rendu interactif</span>
+              <span class="pill" data-fr="Algorithmes 3D" data-en="3D Algorithms">Algorithmes 3D</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h4 data-fr="Langages de programmation" data-en="Programming Languages">Langages de programmation</h4>
+            <div class="pill-row">
+              <span class="pill">C/C++</span>
+              <span class="pill">Python</span>
+              <span class="pill">Java</span>
+              <span class="pill">OCaml</span>
+              <span class="pill">Prolog</span>
+              <span class="pill">R</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h4 data-fr="Développement Mobile & Web" data-en="Mobile &amp; Web Development">Développement Mobile &amp;
+              Web</h4>
+            <div class="pill-row">
+              <span class="pill">Kotlin</span>
+              <span class="pill">Android Studio</span>
+              <span class="pill">HTML</span>
+              <span class="pill">CSS</span>
+              <span class="pill">JavaScript</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h4 data-fr="Environnements & Outils dev" data-en="Development Tools &amp; Environments">Environnements
+              &amp; Outils dev</h4>
+            <div class="pill-row">
+              <span class="pill">Git &amp; GitHub</span>
+              <span class="pill">Linux</span>
+              <span class="pill">Windows</span>
+              <span class="pill" data-fr="IDEs (JetBrains, VS Code)" data-en="IDEs (JetBrains, VS Code)">IDEs
+                (JetBrains, VS Code)</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h4 data-fr="Résolution & Modélisation" data-en="Problem Solving & Modeling">Résolution &amp; Modélisation
+            </h4>
+            <div class="pill-row">
+              <span class="pill">PyCSP3</span>
+              <span class="pill" data-fr="Programmation par contraintes" data-en="Constraint Programming">Programmation
+                par contraintes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Langues -->
+      <div class="tile tile-langues" id="langues" data-reveal>
+        <span class="tile-label">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span data-fr="Langues" data-en="Languages">Langues</span>
+        </span>
+        <div class="pill-row">
+          <span class="pill" data-fr="Français — Courant" data-en="French — Fluent">Français — Courant</span>
+          <span class="pill" data-fr="Anglais — B2 (TOEIC 885/990)" data-en="English — B2 (TOEIC 885/990)">Anglais — B2
+            (TOEIC 885/990)</span>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="tile tile-contact" id="contact" data-reveal>
+        <span class="tile-label">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          <span data-fr="Contact" data-en="Contact">Contact</span>
+        </span>
+        <p data-fr="Ouverte à un stage en développement IA — n'hésite pas à me contacter."
+          data-en="I'm open to internship opportunities in AI development — feel free to get in touch.">Ouverte à un
+          stage en développement IA — n'hésite pas à me contacter.</p>
+        <ul class="contact-links">
+          <li><a href="mailto:maroua.behih@etud.univ-angers.fr">Email</a></li>
+          <li><a href="https://www.linkedin.com/in/marouayasmine-behih" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/yasmine-maroua" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-note">© 2026 Maroua Behih</div>
+
   </div>
 
-  <div class="bento">
+  <!-- Scripts interactifs (Canvas dynamique adaptatif, Traduction & Thème) -->
+  <script>
+    /* 1. Animation Canvas adaptative (mode sombre & clair) */
+    (function () {
+      const canvas = document.getElementById('bgCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let particles = [];
 
-    <div class="tile tile-presentation" id="presentation" data-reveal>
-      <span class="tile-label">Présentation</span>
-      <h1>Au croisement de l'<span>IA</span>, de la modélisation et du visuel</h1>
-      <p>
-        Étudiante en M1 Informatique à l’Université d’Angers, je m’intéresse à l'intelligence artificielle sous un angle théorique et appliqué : machine learning, deep learning, traitement d'images et du signal. Passionnée par la résolution de problèmes complexes, la modélisation et l'optimisation, je combine rigueur mathématique et logique pour explorer des approches d'IA à forte dimension scientifique.
-      </p>
-      <a class="badge" href="https://youtube.com/shorts/NYSA6dc7lqo?si=vKvdRVb_ayZRSxr-" target="_blank" rel="noopener">
-        <span class="dot"></span>
-        <span>Lauréate de la bourse Femmes en Sciences 2026</span>
-        <span class="play-icon" aria-hidden="true">▶</span>
-      </a>
-    </div>
-
-    <div class="tile tile-formation" id="formation" data-reveal>
-      <span class="tile-label">Formation</span>
-      <div class="mini-list">
-        <div class="mini-item">
-          <div class="date">2026 – en cours</div>
-          <h3>Master 1 Informatique</h3>
-          <p>Université d'Angers</p>
-          <ul>
-            <li><strong>Modules principaux :</strong> Intelligence Artificielle, Optimisation linéaire, Développement Mobile, Design Pattern, Introduction à la résolution de problème.</li>
-          </ul>
-        </div>
-        <div class="mini-item">
-          <div class="date">2024 – 2026</div>
-          <h3>Licence Informatique (L2, L3)</h3>
-          <p>Université d'Angers</p>
-          <p class="honor">🏅 Classée 2<sup>e</sup> de promotion (2 ans consécutifs)</p>
-          <ul>
-            <li><strong>Modules principaux :</strong> Développement Web, Traitement de données, Bases de données, Théorie des langages et Compilation, Programmation orientée objet, Programmation fonctionnelle, Programmation logique, Synthèse d'image, Introduction au machine learning.</li>
-          </ul>
-        </div>
-        <div class="mini-item">
-          <div class="date">2022 – 2024</div>
-          <h3>Cycle préparatoire ingénieur info.</h3>
-          <p>USTHB, Alger</p>
-          <p class="honor">🥇 Major de promotion en 1<sup>ère</sup> année</p>
-          <ul>
-            <li><strong>Modules principaux :</strong> Analyse mathématique, Algèbre linéaire, Probabilités & statistiques, Algorithmique et complexité, Structures de fichiers et structures de données, Architecture des ordinateurs, Théorie des graphes.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="tile tile-experience" id="experience" data-reveal>
-      <span class="tile-label">Expériences</span>
-      <div class="mini-list">
-        <div class="mini-item">
-          <div class="date">Avril 2026 – Mai 2026</div>
-          <h3>Stage de L3</h3>
-          <p>Université d'Angers</p>
-          <ul>
-            <li>Développement d’une application web accessible depuis un navigateur, automatisant la constitution de poules sportives et la numérotation des équipes selon des contraintes géographiques, sportives et réglementaires.</li>
-            <li>Conception de deux algorithmes de répartition : l’un minimisant les distances géographiques entre clubs, l’autre équilibrant les poules selon le statut sportif des équipes (montantes, stables, descendantes).</li>
-            <li>Import et validation de données au format CSV avec détection automatique des anomalies.</li>
-            <li>Visualisation cartographique interactive des poules générées (marqueurs colorés par poule) couplée à des tableaux de statistiques (distance moyenne intra-poule, écart-type, poids de niveau).</li>
-            <li>Numérotation automatique des équipes respectant les souhaits des clubs (numéro synchronisé, réparti ou libre selon les cas).</li>
-          </ul>
-        </div>
-        <div class="mini-item">
-          <div class="date">Février 2026 – Juillet 2026</div>
-          <h3>Preneuse de notes — Service Inclusion Relais Handicap</h3>
-          <p>Université d'Angers</p>
-          <ul>
-            <li>Prise de notes structurée et rigoureuse en cours, transmise régulièrement via OneNote dans les délais impartis.</li>
-            <li>Autonomie, assiduité et sens des responsabilités dans le respect des obligations contractuelles.</li>
-          </ul>
-        </div>
-        <div class="mini-item">
-          <div class="date">2023 – 2024</div>
-          <h3>Membre du département des relations externes — Micro Club</h3>
-          <p>USTHB-Alger</p>
-          <ul>
-            <li>Organisation et coordination d'événements scientifiques et de hackathons.</li>
-            <li>Communication et négociation avec les partenaires externes, avec un accent mis sur la gestion et l'organisation de projets avec les autres départements du club.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="tile tile-projects" id="projects" data-reveal>
-      <span class="tile-label">Projets</span>
-      <div class="projects-row">
-        <div class="case">
-          <div class="case-thumb">
-            <img src="classification.png" alt="Aperçu du projet de classification d'images" loading="lazy">
-          </div>
-          <div class="case-body">
-            <div class="case-header-row">
-              <span class="tag">Machine learning · Python</span>
-              <a href="https://github.com/yasmine-maroua/classification-images" class="project-github-link" target="_blank" rel="noopener" title="Voir le code sur GitHub" aria-label="Code du projet Classification d'images sur GitHub">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                <span>Code</span>
-              </a>
-            </div>
-            <h3>Classification d’images — du K-NN au ResNet-18</h3>
-            <p>
-              Classification multi-classes d’images couleur de 32×32 pixels réparties en 10 classes. Comparaison progressive de plusieurs modèles : des approches classiques (K-NN à environ 22&nbsp;%, régression logistique à 39,5&nbsp;% et perceptron multicouche à 49,5&nbsp;%) vers des architectures spécialisées en vision par ordinateur. Mise en œuvre d’un réseau de neurones convolutif (CNN) optimisé avec normalisation et régularisation (73,5&nbsp;% de précision), puis d’une architecture résiduelle (ResNet-18) combinant augmentation de données et Test Time Augmentation pour atteindre un score final de 94,1&nbsp;% sur le jeu de test.
-            </p>
-          </div>
-        </div>
-
-        <div class="case">
-          <div class="case-thumb">
-            <img src="insect_world.gif" alt="Aperçu Insect World 3D" loading="lazy">
-          </div>
-          <div class="case-body">
-            <div class="case-header-row">
-              <span class="tag">Synthèse d’image · C &amp; OpenGL</span>
-              <a href="https://github.com/yasmine-maroua/insect_world" class="project-github-link" target="_blank" rel="noopener" title="Voir le code sur GitHub" aria-label="Code du projet Insect World sur GitHub">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                <span>Code</span>
-              </a>
-            </div>
-            <h3>Insect World — Monde 3D interactif</h3>
-            <p>
-              Modélisation d’un univers 3D animé en C et OpenGL (GLUT). Il intègre un ciel sphérique texturé, un sol herbeux optimisé (display lists), ainsi que des plantes générées par un placement déterministe. Le monde est peuplé d’une coccinelle pilotable au clavier et de quatre insectes autonomes (guêpe, papillon, libellule, mouche) dotés d’animations de vol et de battements d’ailes articulés. Le rendu met en œuvre des textures générées par le code, un éclairage à deux sources, des ombres douces au sol et un effet de brouillard atmosphérique.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tile tile-skills" id="skills" data-reveal>
-      <span class="tile-label">Compétences</span>
-      <div class="skill-groups-grid">
-        <div class="skill-card">
-          <h4>IA &amp; Vision par ordinateur</h4>
-          <div class="pill-row">
-            <span class="pill">PyTorch</span>
-            <span class="pill">TensorFlow</span>
-            <span class="pill">scikit-learn</span>
-            <span class="pill">CNN</span>
-            <span class="pill">Traitement d'images</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <h4>Infographie &amp; Synthèse 3D</h4>
-          <div class="pill-row">
-            <span class="pill">OpenGL</span>
-            <span class="pill">Qt</span>
-            <span class="pill">Rendu interactif</span>
-            <span class="pill">Algorithmes 3D</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <h4>Langages de programmation</h4>
-          <div class="pill-row">
-            <span class="pill">C/C++</span>
-            <span class="pill">Python</span>
-            <span class="pill">Java</span>
-            <span class="pill">OCaml</span>
-            <span class="pill">Prolog</span>
-            <span class="pill">R</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <h4>Développement Mobile &amp; Web</h4>
-          <div class="pill-row">
-            <span class="pill">Kotlin</span>
-            <span class="pill">Android Studio</span>
-            <span class="pill">HTML</span>
-            <span class="pill">CSS</span>
-            <span class="pill">JavaScript</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <h4>Environnements &amp; Outils dev</h4>
-          <div class="pill-row">
-            <span class="pill">Git &amp; GitHub</span>
-            <span class="pill">Linux</span>
-            <span class="pill">Windows</span>
-            <span class="pill">IDEs (JetBrains, NetBeans)</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <h4>Résolution &amp; Modélisation</h4>
-          <div class="pill-row">
-            <span class="pill">PyCSP3</span>
-            <span class="pill">Programmation par contraintes</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tile tile-langues" id="langues" data-reveal>
-      <span class="tile-label">Langues</span>
-      <div class="pill-row">
-        <span class="pill">Français — Courant</span>
-        <span class="pill">Anglais — B2 (TOEIC 885/990)</span>
-      </div>
-    </div>
-
-    <div class="tile tile-contact" id="contact" data-reveal>
-      <span class="tile-label">Contact</span>
-      <p>Ouverte à un stage en développement IA — n'hésite pas à me contacter.</p>
-      <ul class="contact-links">
-        <li><a href="mailto:maroua.behih@etud.univ-angers.fr">Email</a></li>
-        <li><a href="https://www.linkedin.com/in/marouayasmine-behih" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="https://github.com/yasmine-maroua" target="_blank" rel="noopener">GitHub</a></li>
-      </ul>
-    </div>
-
-  </div>
-
-  <div class="footer-note">© 2026 Maroua Behih</div>
-
-</div>
-
-<script>
-  (function() {
-    var root = document.documentElement;
-    var toggleBtn = document.getElementById('themeToggle');
-    var stored = null;
-    try { stored = localStorage.getItem('theme'); } catch (e) {}
-    var systemLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-    var initial = stored || (systemLight ? 'light' : 'dark');
-    applyTheme(initial);
-
-    function applyTheme(theme) {
-      if (theme === 'light') {
-        root.setAttribute('data-theme', 'light');
-        if (toggleBtn) toggleBtn.textContent = '☀️';
-      } else {
-        root.removeAttribute('data-theme');
-        if (toggleBtn) toggleBtn.textContent = '🌙';
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
       }
-    }
+      window.addEventListener('resize', resize);
+      resize();
 
-    if (toggleBtn) {
-      toggleBtn.addEventListener('click', function() {
-        var current = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
-        var next = current === 'light' ? 'dark' : 'light';
-        applyTheme(next);
-        try { localStorage.setItem('theme', next); } catch (e) {}
-      });
-    }
-  })();
-</script>
-
-<script>
-  (function() {
-    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var tiles = document.querySelectorAll('[data-reveal]');
-    if (prefersReduced || !('IntersectionObserver' in window)) {
-      tiles.forEach(function(t) { t.classList.add('is-visible'); });
-      return;
-    }
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
+      class Particle {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.vx = (Math.random() - 0.5) * 0.35;
+          this.vy = (Math.random() - 0.5) * 0.35;
+          this.radius = Math.random() * 1.5 + 1.2;
         }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          if (this.x < 0 || this.x > width) this.vx *= -1;
+          if (this.y < 0 || this.y > height) this.vy *= -1;
+        }
+        draw(isLight) {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = isLight ? 'rgba(124, 77, 190, 0.45)' : 'rgba(139, 92, 246, 0.55)';
+          ctx.fill();
+        }
+      }
+
+      const count = Math.min(Math.floor(window.innerWidth / 22), 55);
+      for (let i = 0; i < count; i++) particles.push(new Particle());
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+
+        particles.forEach(p => {
+          p.update();
+          p.draw(isLight);
+        });
+
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 120) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              const alpha = (1 - dist / 120) * (isLight ? 0.22 : 0.18);
+              ctx.strokeStyle = isLight ? `rgba(124, 77, 190, ${alpha})` : `rgba(139, 92, 246, ${alpha})`;
+              ctx.lineWidth = 0.9;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+
+    /* 2. Gestion intuitive de la Langue (FR / English) */
+  (function() {
+    const langToggle = document.getElementById('langToggle');
+    const langText = document.getElementById('langText');
+    const cvBtn = document.getElementById('cvBtn');
+    let currentLang = localStorage.getItem('lang') || 'fr';
+
+    function updateLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang;
+
+      if (lang === 'fr') {
+        langText.textContent = 'English';
+        if (cvBtn) cvBtn.setAttribute('href', 'CV_BEHIH_Maroua.pdf');
+      } else {
+        langText.textContent = 'Français';
+        if (cvBtn) cvBtn.setAttribute('href', 'Resume_BEHIH_Maroua.pdf');
+      }
+
+      document.querySelectorAll('[data-fr]').forEach(el => {
+        const text = el.getAttribute(`data-${lang}`);
+        if (text) el.innerHTML = text;
       });
-    }, { threshold: 0.15 });
-    tiles.forEach(function(t, i) {
-      t.style.transitionDelay = (i * 60) + 'ms';
-      observer.observe(t);
+
+      document.querySelectorAll('[data-fr-title]').forEach(el => {
+        const title = el.getAttribute(`data-${lang}-title`);
+        if (title) el.setAttribute('title', title);
+      });
+      document.querySelectorAll('[data-fr-alt]').forEach(el => {
+        const alt = el.getAttribute(`data-${lang}-alt`);
+        if (alt) el.setAttribute('alt', alt);
+      });
+      document.querySelectorAll('[data-fr-aria-label]').forEach(el => {
+        const label = el.getAttribute(`data-${lang}-aria-label`);
+        if (label) el.setAttribute('aria-label', label);
+      });
+      document.querySelectorAll('[data-fr-content]').forEach(el => {
+        const content = el.getAttribute(`data-${lang}-content`);
+        if (content) el.setAttribute('content', content);
+      });
+    }
+
+    langToggle.addEventListener('click', () => {
+      const nextLang = currentLang === 'fr' ? 'en' : 'fr';
+      updateLanguage(nextLang);
     });
+
+    updateLanguage(currentLang);
   })();
-</script>
+
+    /* 3. Toggle Dark/Light Theme */
+    (function () {
+      var root = document.documentElement;
+      var toggleBtn = document.getElementById('themeToggle');
+      var stored = null;
+      try {stored = localStorage.getItem('theme');} catch (e) { }
+      var systemLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+      var initial = stored || (systemLight ? 'light' : 'dark');
+      applyTheme(initial);
+
+      function applyTheme(theme) {
+        if (theme === 'light') {
+          root.setAttribute('data-theme', 'light');
+          if (toggleBtn) toggleBtn.textContent = '☀️';
+        } else {
+          root.removeAttribute('data-theme');
+          if (toggleBtn) toggleBtn.textContent = '🌙';
+        }
+      }
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function () {
+          var current = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+          var next = current === 'light' ? 'dark' : 'light';
+          applyTheme(next);
+          try {localStorage.setItem('theme', next);} catch (e) { }
+        });
+      }
+    })();
+
+    /* 4. Revealing Animation */
+    (function () {
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var tiles = document.querySelectorAll('[data-reveal]');
+      if (prefersReduced || !('IntersectionObserver' in window)) {
+        tiles.forEach(function (t) {t.classList.add('is-visible');});
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {threshold: 0.15});
+      tiles.forEach(function (t, i) {
+        t.style.transitionDelay = (i * 60) + 'ms';
+        observer.observe(t);
+      });
+    })();
+  </script>
 </body>
+
 </html>
